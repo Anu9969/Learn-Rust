@@ -97,7 +97,22 @@ fn main(){
   let _s3: &str = &s[11..16];
   let _s4: &str = &s[17..22];
   println!("{}", _s2);
+
+
+  // String literal, known at compile time
+  let x: &str = "hello world";
+
+  // Dynamic string
+  let hello: String = String::from("hello world");
+  // String slice, references the entire string
+  let y: &str = &hello[..];
+  // String slice, references a part of the string
+  let z: &str = &hello[0..3];
+
+
 }
+
+
 
 
 
