@@ -41,21 +41,44 @@
 
 
 //Macros are a way of writing code that writes other code, which is known as metaprogramming.
-#[derive(Debug)]
+// #[derive(Debug)]
 
-struct User{
-  name: String,
-  age: u32,
-}
+// struct User{
+//   name: String,
+//   age: u32,
+// }
 
 
-fn main() {
-  let u:User = User{
-    name: String::from("Anurag"),
-    age: 21
-  };
+// fn main() {
+//   let u:User = User{
+//     name: String::from("Anurag"),
+//     age: 21
+//   };
 
-  println!("{:?}", u.name);
-  println!("{:?}", u.age);
-  println!("{:?}", u);
+//   println!("{:?}", u.name);
+//   println!("{:?}", u.age);
+//   println!("{:?}", u);
+// }
+
+
+//========================================================================================================================
+
+//borrowing and references
+// fn main(){
+//   let x:String = String::from("hanji");
+
+//   let y:&String = &x;
+
+//   println!("x ={},y = {}", x, *y)
+// }
+
+//ownership
+fn main(){
+  let x:String = String::from("hanji");
+
+  let y:String = x;
+ //cannot use x after this point
+  // println!("{}", x)
+  println!("{}", y)
+  
 }
