@@ -194,33 +194,61 @@
 //========================================================================================================================
 
 //procedural macro ==> derive macro
-// This is a generic trait
-trait HelloMacro {
-    fn hello_macro();
-}
+// // This is a generic trait
+// trait HelloMacro {
+//     fn hello_macro();
+// }
 
-// Custom struct MyStruct, implementing the above trait
-struct MyStruct;
-impl HelloMacro for MyStruct {
-    fn hello_macro() {
-        println!("Hello, Macro! My name is MyStruct!");
-    }
-}
+// // Custom struct MyStruct, implementing the above trait
+// struct MyStruct;
+// impl HelloMacro for MyStruct {
+//     fn hello_macro() {
+//         println!("Hello, Macro! My name is MyStruct!");
+//     }
+// }
 
-// Custom struct YourStruct, implementing the above trait
-struct YourStruct;
-impl HelloMacro for YourStruct {
-    fn hello_macro() {
-        println!("Hello, Macro! My name is YourStruct!");
-    }
-}
+// // Custom struct YourStruct, implementing the above trait
+// struct YourStruct;
+// impl HelloMacro for YourStruct {
+//     fn hello_macro() {
+//         println!("Hello, Macro! My name is YourStruct!");
+//     }
+// }
 
-fn main() {
-    MyStruct::hello_macro();
-    YourStruct::hello_macro();
-}
+// fn main() {
+//     MyStruct::hello_macro();
+//     YourStruct::hello_macro();
+// }
 //========================================================================================================================
 
+// //procedural macro ==> function like macro
+// vec! Macro for creating Vec.
+
+fn main(){
+let my_vector = vec![1, 2, 3];
+
+// println! and format! macros for formatting strings.
+let name = "World";
+println!("Hello, {}!", name);
+
+let formatted_string = format!("Hello, {}!", name);
+
+// assert! and assert_eq! macros for writing assertions.
+assert!(true);
+assert_eq!(2 + 2, 4);
+
+
+// panic! Macro used to cause Panic exceptions in the program.
+panic!("Something went wrong!");
+
+// env! Macro for obtaining environment variables at compile time.
+let current_user = env!("USER");
+println!("Current user: {}", current_user);
+
+
+// declare_id! is a macro used in the anchor framework to declare program IDs
+declare_id!("3Vg9yrVTKRjKL9QaBWsZq4w7UsePHAttuZDbrZK3G5pf");
+}
 //========================================================================================================================
 
 //========================================================================================================================
