@@ -141,9 +141,22 @@ macro_rules! double{
   }
 }
 
+fn to_uppercase(s: &str) -> String{
+  s.to_uppercase()
+}
+
+macro_rules! uppercase{
+  ($s:expr) => {
+    $s.to_uppercase()
+  }
+}
+
 fn main() {
  let x:i32 = 10;
+  let y:&str = "I am te Best";
   println!("{}", double!(x));
+  println!("{}", to_uppercase(y));
+  println!("{}", uppercase!(y));
 }
 
 
