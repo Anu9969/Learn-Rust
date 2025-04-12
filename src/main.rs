@@ -135,32 +135,57 @@
 
 //declarative macro 
 
-macro_rules! double{
-  ($x:expr) => {
-    $x * 2
-  }
-}
+// macro_rules! double{
+//   ($x:expr) => {
+//     $x * 2
+//   }
+// }
 
-fn to_uppercase(s: &str) -> String{
-  s.to_uppercase()
-}
+// fn to_uppercase(s: &str) -> String{
+//   s.to_uppercase()
+// }
 
-macro_rules! uppercase{
-  ($s:expr) => {
-    $s.to_uppercase()
+// macro_rules! uppercase{
+//   ($s:expr) => {
+//     $s.to_uppercase()
+//   }
+// }
+
+// fn main() {
+//  let x:i32 = 10;
+//   let y:&str = "I am te Best";
+//   println!("{}", double!(x));
+//   println!("{}", to_uppercase(y));
+//   println!("{}", uppercase!(y));
+// }
+
+
+
+
+macro_rules! add{
+  // Match a single parameter
+  ($a:expr)=>{
+     $a
+  };
+ // Match 2 parameters
+  ($a:expr,$b:expr)=>{
+     {
+         $a+$b
+     }
+  };
+ // Recursive call
+  ($a:expr,$($b:tt)*)=>{
+      {
+          $a+add!($($b)*)
+      }
   }
 }
 
 fn main() {
- let x:i32 = 10;
-  let y:&str = "I am te Best";
-  println!("{}", double!(x));
-  println!("{}", to_uppercase(y));
-  println!("{}", uppercase!(y));
+  println!("{}", add!(1, 2, 3, 4));
 }
 
-
-
+// The repeated token type is enclosed in $() and is followed by a * or + indicating the number of times the token will berepeated. $($b:tt)* denotes parameters of type tt that can be repeated 0 to N times. The add!($($b)*) statement recursively calls the add! macro, achieving the capability of handling a non-fixed number of parameters.
 
 
 
