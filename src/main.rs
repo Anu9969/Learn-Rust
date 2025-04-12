@@ -162,28 +162,28 @@
 
 
 
-macro_rules! add{
-  // Match a single parameter
-  ($a:expr)=>{
-     $a
-  };
- // Match 2 parameters
-  ($a:expr,$b:expr)=>{
-     {
-         $a+$b
-     }
-  };
- // Recursive call
-  ($a:expr,$($b:tt)*)=>{
-      {
-          $a+add!($($b)*)
-      }
-  }
-}
+// macro_rules! add{
+//   // Match a single parameter
+//   ($a:expr)=>{
+//      $a
+//   };
+//  // Match 2 parameters
+//   ($a:expr,$b:expr)=>{
+//      {
+//          $a+$b
+//      }
+//   };
+//  // Recursive call
+//   ($a:expr,$($b:tt)*)=>{
+//       {
+//           $a+add!($($b)*)
+//       }
+//   }
+// }
 
-fn main() {
-  println!("{}", add!(1, 2, 3, 4));
-}
+// fn main() {
+//   println!("{}", add!(1, 2, 3, 4));
+// }
 
 // The repeated token type is enclosed in $() and is followed by a * or + indicating the number of times the token will berepeated. $($b:tt)* denotes parameters of type tt that can be repeated 0 to N times. The add!($($b)*) statement recursively calls the add! macro, achieving the capability of handling a non-fixed number of parameters.
 
@@ -193,6 +193,32 @@ fn main() {
 
 //========================================================================================================================
 
+//procedural macro ==> derive macro
+// This is a generic trait
+trait HelloMacro {
+    fn hello_macro();
+}
+
+// Custom struct MyStruct, implementing the above trait
+struct MyStruct;
+impl HelloMacro for MyStruct {
+    fn hello_macro() {
+        println!("Hello, Macro! My name is MyStruct!");
+    }
+}
+
+// Custom struct YourStruct, implementing the above trait
+struct YourStruct;
+impl HelloMacro for YourStruct {
+    fn hello_macro() {
+        println!("Hello, Macro! My name is YourStruct!");
+    }
+}
+
+fn main() {
+    MyStruct::hello_macro();
+    YourStruct::hello_macro();
+}
 //========================================================================================================================
 
 //========================================================================================================================
