@@ -284,9 +284,10 @@ fn main(){
   };
   //now we can use serde to convert this struct to json or string without having to implement the to_string method
 
-  let serialized_string = serde_json::to_string(u);
+  let serialized_string = serde_json::to_string(&u);
   match serialized_string {
-    Ok(str:String) => println!("{}", str),
+    
+    Ok(s) => println!("{}", s),
     Err => println!("Error")
   }
   

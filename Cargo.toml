@@ -8,6 +8,8 @@ edition = "2021"
 
 [dependencies]
 package_name = "0.1.0"
-serde = {"1.0.219" , features = ["derive"]
+serde = {version = "1.0.219" , features = ["derive"]}
 serde_json = "1.0.140"
+
+cargo_toml = "0.22.1"
 
