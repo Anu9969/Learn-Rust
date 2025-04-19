@@ -288,7 +288,7 @@ fn main(){
   match serialized_string {
     
     Ok(s) => println!("{}", s),
-    Err => println!("Error")
+    _err => println!("Error")
   }
   
 }
