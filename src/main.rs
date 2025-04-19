@@ -224,31 +224,72 @@
 // //procedural macro ==> function like macro
 // vec! Macro for creating Vec.
 
-fn main(){
-let my_vector = vec![1, 2, 3];
+// fn main(){
+// let my_vector = vec![1, 2, 3];
 
-// println! and format! macros for formatting strings.
-let name = "World";
-println!("Hello, {}!", name);
+// // println! and format! macros for formatting strings.
+// let name = "World";
+// println!("Hello, {}!", name);
 
-let formatted_string = format!("Hello, {}!", name);
+// let formatted_string = format!("Hello, {}!", name);
 
-// assert! and assert_eq! macros for writing assertions.
-assert!(true);
-assert_eq!(2 + 2, 4);
-
-
-// panic! Macro used to cause Panic exceptions in the program.
-panic!("Something went wrong!");
-
-// env! Macro for obtaining environment variables at compile time.
-let current_user = env!("USER");
-println!("Current user: {}", current_user);
+// // assert! and assert_eq! macros for writing assertions.
+// assert!(true);
+// assert_eq!(2 + 2, 4);
 
 
-// declare_id! is a macro used in the anchor framework to declare program IDs
-declare_id!("3Vg9yrVTKRjKL9QaBWsZq4w7UsePHAttuZDbrZK3G5pf");
+// // panic! Macro used to cause Panic exceptions in the program.
+// panic!("Something went wrong!");
+
+// // env! Macro for obtaining environment variables at compile time.
+// let current_user = env!("USER");
+// println!("Current user: {}", current_user);
+
+
+// // declare_id! is a macro used in the anchor framework to declare program IDs
+// declare_id!("3Vg9yrVTKRjKL9QaBWsZq4w7UsePHAttuZDbrZK3G5pf");
+// }
+// //========================================================================================================================
+
+
+// struct User{
+//   username:String,
+//   password:String
+// }
+
+// impl User{
+//   deserialize_from_str(){
+  
+//   }
+//   to_string(){}
+// }
+
+
+//Serde
+// a popular library for serializing and deserializing data in Rust. It allows you to easily convert between Rust data structures and various data formats like JSON, YAML, and more.
+
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+
+struct User{
+  username:String,
+  password:String
 }
-//========================================================================================================================
+
+fn main(){
+  let u: User = User{
+    username:String::from("Anurag"),
+    password:String::from("12345")
+  };
+  //now we can use serde to convert this struct to json or string without having to implement the to_string method
+
+  let serialized_string = serde_json::to_string(u);
+  match serialized_string {
+    Ok(str:String) => println!("{}", str),
+    Err => println!("Error")
+  }
+  
+}
 
 //========================================================================================================================
